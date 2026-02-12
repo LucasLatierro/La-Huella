@@ -25,6 +25,7 @@ const mensaje = document.getElementById("formMessage");
 // ========================
 cargarServicios();
 cargarEquipo();
+let galIndex = 0;
 cargarGaleria();
 registrarEventos();
 
@@ -76,7 +77,7 @@ function cargarServicios() {
 // ========================
 function servToProf() {
   limpiarSelect(profesionalSelect, "Elegí un profesional");
-  const tipo = document.getElementById("servicio").value;
+  const tipo = servicioSelect.value;
   FUNCIONARIOS.filter(f => f.tipo === tipo).forEach(f => {
     profesionalSelect.innerHTML += `<option value="${f.id}">${f.nombre}</option>`;
   });
@@ -126,10 +127,8 @@ function cargarEquipo() {
 // ========================
 // GALERÍA
 // ========================
-let galIndex = 0;
 
 function cargarGaleria() {
-  const img = document.getElementById("carouselImage");
   const dots = document.getElementById("carouselDots");
 
   actualizarGaleria();
