@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin – La Huella</title>
+
+  <meta name="description" content="Panel de administración de reservas de la Veterinaria La Huella." />
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ====================================== -->
+  <!-- HEADER -->
+  <!-- ====================================== -->
+  <header class="header">
+    <div class="container header__content">
+
+      <a href="index.html" class="brand">
+        <div class="brand__logo">🐾</div>
+        <div class="brand__text">
+          <strong>La Huella</strong>
+          <span>Panel administrador</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Volver al sitio</a>
+        <button id="logoutBtn" class="btn btn--ghost btn--sm">Cerrar sesión</button>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ====================================== -->
+  <!-- CONTENIDO -->
+  <!-- ====================================== -->
+  <main class="section">
+    <div class="container">
+
+      <!-- ======================= -->
+      <!-- LOGIN ADMIN -->
+      <!-- ======================= -->
+      <section id="loginSection" class="panel">
+        <h1>Ingreso administrador</h1>
+        <p class="hint">Ingresá con las credenciales definidas en el sistema.</p>
+
+        <form id="adminLoginForm" class="form form--compact" novalidate>
+          <div class="field">
+            <label for="adminUser">Usuario</label>
+            <input id="adminUser" type="text" autocomplete="username" required />
+          </div>
+
+          <div class="field">
+            <label for="adminPass">Contraseña</label>
+            <input id="adminPass" type="password" autocomplete="current-password" required />
+          </div>
+
+          <button class="btn btn--primary" type="submit">Ingresar</button>
+
+          <div id="adminMsg" class="message" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+
+      <!-- ======================= -->
+      <!-- DASHBOARD -->
+      <!-- ======================= -->
+      <section id="dashboardSection" class="panel" hidden>
+        <h1>Turnos reservados</h1>
+        <p class="hint">Listado generado desde LocalStorage.</p>
+
+        <div class="tableWrap">
+          <table class="table" aria-label="Tabla de reservas">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Mascota</th>
+                <th>Profesional</th>
+                <th>Servicio</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+
+            <tbody id="bookingsTbody">
+              <!-- Renderizado dinámicamente por admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="emptyState" class="callout" hidden>
+          No hay turnos reservados.
+        </div>
+
+
+        <!-- ======================= -->
+        <!-- MODAL DE BORRADO -->
+        <!-- ======================= -->
+        <div id="receiptAdmin" class="receipt" hidden>
+          <div class="receipt__content">
+            <h3>ATENCIÓN</h3>
+
+            <p>¿Seguro que querés borrar esta reserva?</p>
+            <p class="note">Una vez eliminada, no se puede recuperar.</p>
+
+            <button id="btnReceiptCancelar" class="btn">Cancelar</button>
+            <button id="btnReceiptBorrar" class="btn btn--danger">Borrar</button>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+
+  <!-- ====================================== -->
+  <!-- SCRIPTS -->
+  <!-- ====================================== -->
+  src/admin.js"></script>
+
+</body>
+</html>

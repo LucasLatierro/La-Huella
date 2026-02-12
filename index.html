@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veterinaria La Huella</title>
+
+  <meta name="description"
+    content="Veterinaria La Huella - Reservá turno para peluquería o atención médica. Atendemos perros y gatos con amor y profesionalismo." />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- SALTAR A CONTENIDO -->
+  <a class="skip-link" href="#reserva">Saltar a reservar turno</a>
+
+  <!-- ====================================== -->
+  <!-- HEADER -->
+  <!-- ====================================== -->
+  <header class="header">
+    <div class="container header__content">
+
+      <a onclick="window.scrollTo({top:0, behavior:'smooth'})" class="brand">
+        <div class="brand__logo">🐾</div>
+        <div class="brand__text">
+          <strong>La Huella</strong>
+          <span>Veterinaria & Peluquería</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#reserva">Reservar</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav__admin" href="admin.html">Admin</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ====================================== -->
+  <!-- HERO -->
+  <!-- ====================================== -->
+  <section id="hero" class="hero">
+    <div class="hero__text">
+      <div>
+        <h1>Cuidamos la salud de tu mascota</h1>
+      </div>
+
+      <div class="hero__btns">
+        <a href="#reserva" class="btn btn--primary">Reservar turno</a>
+        <a href="#servicios" class="btn btn--primary">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- SERVICIOS -->
+  <!-- ====================================== -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <header class="section__header">
+        <h2>Servicios</h2>
+        <p>Elegí lo que tu mascota necesita. <strong>Atendemos perros y gatos.</strong></p>
+      </header>
+
+      <div id="servicesCards" class="cards">
+        <!-- Renderizado por app.js -->
+      </div>
+
+      <div class="callout">
+        <strong>Importante:</strong> Pagos en el local. La consulta médica tiene un precio base de $500.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- EQUIPO -->
+  <!-- ====================================== -->
+  <section id="equipo" class="section">
+    <div class="container">
+      <header class="section__header">
+        <h2>Nuestro equipo</h2>
+        <p>Conocé quién va a atender a tu mascota.</p>
+      </header>
+
+      <div id="teamCards" class="team">
+        <!-- Renderizado por app.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- GALERÍA -->
+  <!-- ====================================== -->
+  <section id="galeria" class="section section--tinted">
+    <div class="container">
+      <header class="section__header">
+        <h2>Galería de trabajos</h2>
+        <p>Algunos resultados de peluquería y cuidados.</p>
+      </header>
+
+      <div class="carousel">
+        <button id="prevSlide" class="carousel__btn" aria-label="Anterior">‹</button>
+
+        <div class="carousel__viewport">
+          <img id="carouselImage" src="src/img/galeria-1-1920x1080.jpg" alt="Imagen" />
+        </div>
+
+        <button id="nextSlide" class="carousel__btn" aria-label="Siguiente">›</button>
+      </div>
+
+      <div id="carouselDots" class="carousel__dots">
+        <!-- Renderizado por app.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- RESERVA -->
+  <!-- ====================================== -->
+  <section id="reserva" class="section section--tinted">
+    <div class="container">
+
+      <header class="section__header">
+        <h2>Reservar turno</h2>
+        <p class="punctuality">⏱️ Se solicita puntualidad para evitar esperas.</p>
+      </header>
+
+      <form id="bookingForm" class="form" novalidate>
+        <div class="form__grid">
+
+          <!-- DOCUMENTO -->
+          <div class="field">
+            <label for="documento">Documento *</label>
+            <input id="documento" type="text" inputmode="numeric" placeholder="Ej: 12345678" required />
+          </div>
+
+          <!-- DUEÑO -->
+          <div class="field">
+            <label for="duenio">Nombre del dueño *</label>
+            <input id="duenio" type="text" placeholder="Ej: Ana Pérez" required />
+          </div>
+
+          <!-- MASCOTA -->
+          <div class="field">
+            <label for="mascota">Nombre de la mascota *</label>
+            <input id="mascota" type="text" placeholder="Ej: Lola" required />
+          </div>
+
+          <!-- TELEFONO -->
+          <div class="field">
+            <label for="telefono">Teléfono *</label>
+            <input id="telefono" type="tel" placeholder="Ej: 099123456" required />
+          </div>
+
+          <!-- SERVICIOS -->
+          <div class="field">
+            <label for="servicio">Servicio *</label>
+            <select id="servicio" required>
+              <option disabled selected>Seleccioná un servicio</option>
+            </select>
+          </div>
+
+          <!-- PROFESIONAL -->
+          <div class="field">
+            <label for="profesional">Profesional *</label>
+            <select id="profesional" required>
+              <option disabled selected>Elegí servicio</option>
+            </select>
+          </div>
+
+          <!-- FECHA -->
+          <div class="field">
+            <label for="fecha">Fecha *</label>
+            <input id="fecha" type="date" required />
+          </div>
+
+          <!-- HORA -->
+          <div class="field">
+            <label for="hora">Hora *</label>
+            <select id="hora" required>
+              <option disabled selected>Elegí una fecha primero</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary">Confirmar reserva</button>
+          <button id="btnClear" type="button" class="btn btn--ghost">Limpiar</button>
+        </div>
+
+        <div id="formMessage" class="message"></div>
+      </form>
+
+      <!-- RECIBO -->
+      <div id="receipt" class="receipt" hidden>
+        <div id="inReceipt">
+          <h3>✔ Reserva confirmada</h3>
+          <p id="receiptText"></p>
+          <button id="btnReceiptAceptar" class="btn">Aceptar</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- CONTACTO -->
+  <!-- ====================================== -->
+  <section id="contacto" class="section">
+    <div class="container contact">
+
+      <div class="contact__box">
+        <h2>Contacto</h2>
+        <p><strong>Tel:</strong> <a href="tel:+59800000000">+598 0000 0000</a></p>
+        <p><strong>Email:</strong> <a href="mailto:contacto@lahuella.com">contacto@lahuella.com</a></p>
+        <p><strong>Dirección:</strong> 21 de setiembre 3015</p>
+
+        <h3>Horarios</h3>
+        <ul class="hours">
+          <li><strong>Lun–Vie:</strong> 09:00 a 18:00</li>
+          <li><strong>Sábado:</strong> 09:00 a 12:30</li>
+          <li><strong>Domingo:</strong> Cerrado</li>
+        </ul>
+      </div>
+
+      <div class="contact__box">
+        <h2>Ubicación</h2>
+        <div class="map">
+          <iframe title="Mapa de ubicación" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=21+de+Setiembre+3015,+Montevideo&output=embed">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====================================== -->
+  <!-- FOOTER -->
+  <!-- ====================================== -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <a href="https://www.instagram.com">Instagram</a>
+      <a href="https://www.facebook.com">Facebook</a>
+
+      <p>© <span id="year"></span> La Huella. Pagos en el local.</p>
+      <p class="small">Proyecto HTML/CSS/JS. Mockup educativo.</p>
+    </div>
+  </footer>
+
+
+  <!-- =========================== -->
+  <!-- SCRIPTS -->
+  <!-- =========================== -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+
+</html>
