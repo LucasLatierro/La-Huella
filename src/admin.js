@@ -3,6 +3,7 @@ import {
   FUNCIONARIOS,
   readBookings,
   obtenerActivas,
+  obtenerBorradas,
   deleteBookingById,
   isAdminLogged,
   setAdminSession,
@@ -22,7 +23,12 @@ const dashboardSection = document.getElementById("dashboardSection");
 const adminMsg = document.getElementById("adminMsg");
 const tbody = document.getElementById("bookingsTbody");
 const emptyState = document.getElementById("emptyState");
+const fecAdminTabla = document.getElementById("fecAdminTabla");
 
+document.getElementById("btnFiltrarAdmin").addEventListener("click", filtrarPorDia);
+function filtrarPorDia(){
+  renderTable(false, fecAdminTabla.value);
+}
 
 // =========================
 // RENDER Y LOGIN
@@ -47,13 +53,24 @@ function protectRoute() {
 // =========================
 // TABLA
 // =========================
-function renderTable(playa) {
-  let reservas = obtenerActivas();
+function renderTable(borradas, fecha) {
+  let reservas;
+  if (isNullOrWhitespace(borradas)) {
+    reservas = obtenerActivas();
+  } else {
+    reservas = obtenerBorradas();
+  }
+  if (isNullOrWhitespace(fecha)){
+    fecha = fecAdminTabla.value;
+  }
+  if (!isNullOrWhitespace(fecha)){
+    reservas = reservas.filter(r => r.fecha === fecha);
+  }
   reservas.sort(
     (a, b) => {
-    const da = new Date(`${a.fecha}T${a.hora}:00`);
-    const db = new Date(`${b.fecha}T${b.hora}:00`);
-    return da - db;
+      const da = new Date(`${a.fecha}T${a.hora}:00`);
+      const db = new Date(`${b.fecha}T${b.hora}:00`);
+      return da - db;
     }
   );
 
