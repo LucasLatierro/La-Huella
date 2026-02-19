@@ -74,6 +74,17 @@ function obtenerReservas() {
 }
 
 function obtenerActivas() {
+  return readBookings().filter(r => r.esActiva === true);
+  /* let activas = [];
+  readBookings().forEach(element => {
+    if (element.esActiva == true){
+      activas.push(element);
+    }
+  });
+  return activas; */
+}
+
+function isAdminLogged() {
   return localStorage.getItem(STORAGE_KEYS.ADMIN_SESSION) === "1";
 }
 
