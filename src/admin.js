@@ -10,6 +10,10 @@ import {
 } from "./core/reservas.js";
 
 
+function isNullOrWhitespace(texto) {
+  return !texto || !texto.trim();
+}
+
 // =========================
 // SELECTORES
 // =========================
