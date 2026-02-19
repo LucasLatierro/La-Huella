@@ -156,5 +156,7 @@ function haySuperposicion(nueva) {
   );
 }
 
-export { SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, obtenerActivas, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }
-//if (typeof module !== "undefined") { module.exports = { SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }; }
+export {
+//if (typeof module !== "undefined") { module.exports = { // para Jest
+  SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, obtenerActivas, obtenerBorradas, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }
+//; } // para Jest
