@@ -329,15 +329,23 @@ img{max-width:100%;display:block;border-radius: var(--radius)}
   z-index:10;
 }
 
-#inReceipt{
-  margin:auto;
-  padding:18px;
-  max-width:340px;
-  text-align:center;
-  background: rgba(183,228,199,.95);
+#receiptAdminTrue {
+  margin: auto;
+  padding: 18px;
+  max-width: 340px;
+  text-align: center;
+  background: rgba(247, 222, 222, 0.95);
   border-radius: var(--radius);
 }
 
+#inReceipt {
+  margin: auto;
+  padding: 18px;
+  max-width: 340px;
+  text-align: center;
+  background: rgba(183, 228, 199, 0.95);
+  border-radius: var(--radius);
+}
 
 /* ==========================
    EQUIPO
