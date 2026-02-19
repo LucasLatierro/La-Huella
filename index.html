@@ -23,21 +23,33 @@
   <header class="header">
     <div class="container header__content">
 
-      <a onclick="window.scrollTo({top:0, behavior:'smooth'})" class="brand">
-        <div class="brand__logo">🐾</div>
-        <div class="brand__text">
-          <strong>La Huella</strong>
-          <span>Veterinaria & Peluquería</span>
-        </div>
-      </a>
+      <div>
+        <a onclick="window.scrollTo({top:0, behavior:'smooth'})" class="brand" id="home">
+          <div class="brand__logo">🐾</div>
+          <div class="brand__text">
+            <strong>La Huella</strong>
+            <span>Veterinaria & Peluquería</span>
+          </div>
+        </a>
+      </div>
 
-      <nav class="nav" aria-label="Navegación principal">
+      <nav id="topnav" class="nav" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#equipo">Equipo</a>
         <a href="#reserva">Reservar</a>
         <a href="#galeria">Galería</a>
         <a href="#contacto">Contacto</a>
         <a class="nav__admin" href="admin.html">Admin</a>
+        <div class="dropdown">
+          <a href="javascript:void(0);" class="dropbtn" id="navIcon">aaa</a>
+          <div class="dropdown-content">
+            <a href="#servicios">Servicios</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#reserva">Reservar</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+        </div>
       </nav>
 
     </div>
