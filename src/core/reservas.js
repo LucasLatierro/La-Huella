@@ -59,8 +59,14 @@ function guardarReserva(reserva) {
   writeBookings(reservas);
 }
 
-  writeBookings(readBookings().filter(r => r.id !== id));
 function deleteBookingById(id) {
+  let reservas = readBookings();
+  reservas.forEach(element => {
+    if (element.id === id){
+      element.esActiva = false;
+    }
+  });
+  writeBookings(reservas);
 }
 
 function obtenerReservas() {
