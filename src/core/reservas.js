@@ -3,7 +3,7 @@
 // =========================================
 
 // Servicios del sistema
-export const SERVICIOS = [
+const SERVICIOS = [
   { id: "peluqueria", nombre: "Peluquería - Corte", precio: 1800 },
   { id: "peluqueria", nombre: "Peluquería - Baño", precio: 1800 },
   { id: "peluqueria", nombre: "Peluquería - Corte de uñas", precio: 1800 },
@@ -11,7 +11,7 @@ export const SERVICIOS = [
 ];
 
 // Funcionarios del sistema
-export const FUNCIONARIOS = [
+const FUNCIONARIOS = [
   { id: "salud-1", tipo: "medica", nombre: "Dra. Sofía", foto: "src/img/equipo-1.jpg" },
   { id: "salud-2", tipo: "medica", nombre: "Dra. Valentina", foto: "src/img/equipo-2.jpg" },
   { id: "salud-3", tipo: "medica", nombre: "Dra. Camila", foto: "src/img/equipo-3.jpg" },
@@ -21,14 +21,14 @@ export const FUNCIONARIOS = [
 ];
 
 // Galería
-export const GALERIA = [
+const GALERIA = [
   { src: "src/img/galeria-1-1920x1080.jpg", alt: "Trabajo realizado 1" },
   { src: "src/img/galeria-2-1920x1080.jpg", alt: "Trabajo realizado 2" },
   { src: "src/img/galeria-3-1920x1080.jpg", alt: "Trabajo realizado 3" }
 ];
 
 // Login admin
-export const ADMIN_CREDENTIALS = { user: "admin", pass: "1234" };
+const ADMIN_CREDENTIALS = { user: "admin", pass: "1234" };
 
 
 // =========================================
@@ -40,7 +40,7 @@ const STORAGE_KEYS = {
   ADMIN_SESSION: "huella_admin_session"
 };
 
-export function readBookings() {
+function readBookings() {
   const raw = localStorage.getItem(STORAGE_KEYS.RESERVAS);
   try {
     return raw ? JSON.parse(raw) : [];
@@ -49,29 +49,29 @@ export function readBookings() {
   }
 }
 
-export function writeBookings(list) {
+function writeBookings(list) {
   localStorage.setItem(STORAGE_KEYS.RESERVAS, JSON.stringify(list));
 }
 
-export function guardarReserva(reserva) {
+function guardarReserva(reserva) {
   const reservas = readBookings();
   reservas.push(reserva);
   writeBookings(reservas);
 }
 
-export function deleteBookingById(id) {
   writeBookings(readBookings().filter(r => r.id !== id));
+function deleteBookingById(id) {
 }
 
-export function obtenerReservas() {
+function obtenerReservas() {
   return readBookings();
 }
 
-export function isAdminLogged() {
+function obtenerActivas() {
   return localStorage.getItem(STORAGE_KEYS.ADMIN_SESSION) === "1";
 }
 
-export function setAdminSession(isLogged) {
+function setAdminSession(isLogged) {
   localStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, isLogged ? "1" : "0");
 }
 
@@ -80,7 +80,7 @@ export function setAdminSession(isLogged) {
 // HORARIOS
 // =========================================
 
-export function generarHorarios(fecha) {
+function generarHorarios(fecha) {
   const dia = new Date(fecha).getDay();
   if (dia === 0) return [];
 
@@ -101,12 +101,12 @@ export function generarHorarios(fecha) {
   return horarios;
 }
 
-export function obtenerHorariosDisponibles(fecha, profesionalId) {
+function obtenerHorariosDisponibles(fecha, profesionalId) {
   const horarios = generarHorarios(fecha);
   const reservas = obtenerReservas();
 
   const ocupados = reservas
-    .filter(r => r.fecha === fecha && r.profesional === profesionalId)
+    .filter(r => r.fecha === fecha && r.profesional === profesionalId && r.esActiva === true)
     .map(r => r.hora);
 
   return horarios.filter(h => !ocupados.includes(h));
@@ -117,7 +117,7 @@ export function obtenerHorariosDisponibles(fecha, profesionalId) {
 // VALIDACIONES
 // =========================================
 
-export function validarReserva(reserva) {
+function validarReserva(reserva) {
   if (Object.values(reserva).some(v => !v)) {
     return { valido: false, mensaje: "Todos los campos son obligatorios." };
   }
@@ -133,7 +133,7 @@ export function validarReserva(reserva) {
   return { valido: true };
 }
 
-export function haySuperposicion(nueva) {
+function haySuperposicion(nueva) {
   return obtenerReservas().some(
     r =>
       r.fecha === nueva.fecha &&
@@ -141,3 +141,6 @@ export function haySuperposicion(nueva) {
       r.profesional === nueva.profesional
   );
 }
+
+export { SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, obtenerActivas, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }
+//if (typeof module !== "undefined") { module.exports = { SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }; }
