@@ -1,5 +1,15 @@
 import { SERVICIOS, FUNCIONARIOS, GALERIA, obtenerHorariosDisponibles, validarReserva, haySuperposicion, guardarReserva } from "./core/reservas.js";
 //const { SERVICIOS, FUNCIONARIOS, GALERIA, obtenerHorariosDisponibles, validarReserva, haySuperposicion, guardarReserva } = require("./core/reservas.js");
+
+document.getElementById("navIcon").addEventListener("click", navIcon);
+function navIcon() {
+  var x = document.getElementById("topnav");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}
 // ========================
 // SELECTORES
 // ========================
