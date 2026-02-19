@@ -2,6 +2,7 @@ import {
   SERVICIOS,
   FUNCIONARIOS,
   readBookings,
+  obtenerActivas,
   deleteBookingById,
   isAdminLogged,
   setAdminSession,
@@ -42,12 +43,15 @@ function protectRoute() {
 // =========================
 // TABLA
 // =========================
-function renderTable() {
-  const reservas = readBookings().sort((a, b) => {
+function renderTable(playa) {
+  let reservas = obtenerActivas();
+  reservas.sort(
+    (a, b) => {
     const da = new Date(`${a.fecha}T${a.hora}:00`);
     const db = new Date(`${b.fecha}T${b.hora}:00`);
     return da - db;
-  });
+    }
+  );
 
   emptyState.hidden = reservas.length !== 0;
 

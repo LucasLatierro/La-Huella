@@ -201,7 +201,8 @@ function obtenerDatos() {
     servicio: servicioSelect.value,
     profesional: profesionalSelect.value,
     fecha: fechaInput.value,
-    hora: horaSelect.value
+    hora: horaSelect.value,
+    esActiva: true
   };
 }
 

@@ -101,11 +101,11 @@
         <!-- MODAL DE BORRADO -->
         <!-- ======================= -->
         <div id="receiptAdmin" class="receipt" hidden>
-          <div class="receipt__content">
+          <div id="receiptAdminTrue">
             <h3>ATENCIÓN</h3>
 
             <p>¿Seguro que querés borrar esta reserva?</p>
-            <p class="note">Una vez eliminada, no se puede recuperar.</p>
+            <p class="note">Una vez eliminada, quedará catalogada como "borrada".</p>
 
             <button id="btnReceiptCancelar" class="btn">Cancelar</button>
             <button id="btnReceiptBorrar" class="btn btn--danger">Borrar</button>
@@ -120,7 +120,7 @@
   <!-- ====================================== -->
   <!-- SCRIPTS -->
   <!-- ====================================== -->
-  <script src="src/admin.js"></script>
+  <script type="module" src="src/admin.js"></script>
 
 </body>
 </html>
