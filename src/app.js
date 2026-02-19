@@ -1,14 +1,5 @@
-import {
-  SERVICIOS,
-  FUNCIONARIOS,
-  GALERIA,
-  obtenerHorariosDisponibles,
-  validarReserva,
-  haySuperposicion,
-  guardarReserva
-} from "./core/reservas.js";
-
-
+import { SERVICIOS, FUNCIONARIOS, GALERIA, obtenerHorariosDisponibles, validarReserva, haySuperposicion, guardarReserva } from "./core/reservas.js";
+//const { SERVICIOS, FUNCIONARIOS, GALERIA, obtenerHorariosDisponibles, validarReserva, haySuperposicion, guardarReserva } = require("./core/reservas.js");
 // ========================
 // SELECTORES
 // ========================
