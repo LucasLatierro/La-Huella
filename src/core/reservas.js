@@ -75,13 +75,10 @@ function obtenerReservas() {
 
 function obtenerActivas() {
   return readBookings().filter(r => r.esActiva === true);
-  /* let activas = [];
-  readBookings().forEach(element => {
-    if (element.esActiva == true){
-      activas.push(element);
-    }
-  });
-  return activas; */
+}
+
+function obtenerBorradas() {
+  return readBookings().filter(r => r.esActiva === false);
 }
 
 function isAdminLogged() {
