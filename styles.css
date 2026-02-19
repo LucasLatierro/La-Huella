@@ -503,9 +503,30 @@ img{max-width:100%;display:block;border-radius: var(--radius)}
 /* ==========================
    MEDIA QUERIES
 ========================== */
-@media (min-width:600px){
-  .form__grid{
-    grid-template-columns: repeat(2,1fr);
+@media screen and (min-width: 600px) {
+  .form__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .nav > a {
+    display: none;
+  }
+  #navIcon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .nav.responsive {
+    position: relative;
   }
   .team{
     grid-template-columns: repeat(2,1fr);
