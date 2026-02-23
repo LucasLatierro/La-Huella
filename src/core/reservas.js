@@ -62,7 +62,7 @@ function guardarReserva(reserva) {
 function deleteBookingById(id) {
   let reservas = readBookings();
   reservas.forEach(element => {
-    if (element.id === id){
+    if (element.id === id) {
       element.esActiva = false;
     }
   });
@@ -71,6 +71,10 @@ function deleteBookingById(id) {
 
 function obtenerReservas() {
   return readBookings();
+}
+
+function obtenerReservasFP(fecha, profesionalId) {
+  return readBookings().filter(r => r.profesional === profesionalId && r.fecha === fecha && r.esActiva === true);
 }
 
 function obtenerActivas() {
