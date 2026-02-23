@@ -121,13 +121,47 @@ function generarHorarios(fecha) {
 
 function obtenerHorariosDisponibles(fecha, profesionalId) {
   const horarios = generarHorarios(fecha);
-  const reservas = obtenerReservas();
+  const reservas = obtenerReservasFP(fecha, profesionalId);
+  const esEstetica = profesionalId.charAt(0) == "e";
+  
+  let ocupados = [];
+  let delta = 0;
+  if (esEstetica){
+    delta++;
+  }
+  while (ocupados.length < horarios.length - delta) {
+    ocupados.push(0);
+  }
 
-  const ocupados = reservas
-    .filter(r => r.fecha === fecha && r.profesional === profesionalId && r.esActiva === true)
-    .map(r => r.hora);
+  for (let i = 0; i < reservas.length; i++) {
+    const r = reservas[i];
+    let coincide = false;
+    for (let j = 0; j < horarios.length - 1 && !coincide; j++) {
+      if (j === 0 && r.hora === horarios[0]) {
+        ocupados[j++] = 1;
+        if (esEstetica){
+          ocupados[j] = 1;
+        }
+        coincide = true;
+      } else if (r.hora === horarios[j + 1]) {
+        ocupados[j++] = 1;
+        if (esEstetica){
+          ocupados[j++] = 1;
+          ocupados[j] = 1;
+        }
+        coincide = true;
+      }
+    }
+  }
 
-  return horarios.filter(h => !ocupados.includes(h));
+  let aRetornar = [];
+  for (let i = 0; i < horarios.length; i++) {
+    const o = ocupados[i];
+    if (o === 0) {
+      aRetornar.push(horarios[i]);
+    }
+  }
+  return aRetornar;
 }
 
 
