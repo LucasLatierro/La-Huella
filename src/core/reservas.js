@@ -4,10 +4,10 @@
 
 // Servicios del sistema
 const SERVICIOS = [
-  { id: "peluqueria", nombre: "Peluquería - Corte", precio: 1800 },
-  { id: "peluqueria", nombre: "Peluquería - Baño", precio: 1800 },
-  { id: "peluqueria", nombre: "Peluquería - Corte de uñas", precio: 1800 },
-  { id: "medica", nombre: "Atención médica", precio: 500 }
+  { id: "peluqueria", nombre: "Peluquería - Corte", precio: 1800, img: "src/img/servicio-corte.jpg" },
+  { id: "peluqueria", nombre: "Peluquería - Baño", precio: 1800, img: "src/img/servicio-baño.jpg" },
+  { id: "peluqueria", nombre: "Peluquería - Corte de uñas", precio: 1800, img: "src/img/servicio-corte-uñas.jpg" },
+  { id: "medica", nombre: "Atención médica", precio: 500, img: "src/img/servicio-medico.jpg" }
 ];
 
 // Funcionarios del sistema
@@ -194,7 +194,11 @@ function haySuperposicion(nueva) {
   );
 }
 
-export {
-//if (typeof module !== "undefined") { module.exports = { // para Jest
+/*if (typeof module !== "undefined") { module.exports = { // para Jest
   SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, obtenerActivas, obtenerBorradas, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }
-//; } // para Jest
+; } // para Jest
+*/
+
+export {
+   SERVICIOS, FUNCIONARIOS, GALERIA, ADMIN_CREDENTIALS, STORAGE_KEYS, readBookings, obtenerActivas, obtenerBorradas, writeBookings, guardarReserva, deleteBookingById, obtenerReservas, isAdminLogged, setAdminSession, generarHorarios, obtenerHorariosDisponibles, validarReserva, haySuperposicion }
+; // para html

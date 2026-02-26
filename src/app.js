@@ -27,6 +27,7 @@ const mensaje = document.getElementById("formMessage");
 cargarServicios();
 cargarEquipo();
 let galIndex = 0;
+let autoplayInterval = null;
 cargarGaleria();
 registrarEventos();
 
@@ -66,8 +67,11 @@ function cargarServicios() {
   cards.innerHTML = SERVICIOS.map(s =>
     `
     <div class="card">
-      <h3>${s.nombre}</h3>
-      <p>Precio base: $${s.precio}</p>
+      <a href="#reserva">
+        <img src="${s.img}" alt="${s.nombre}" href="#reserva">
+        <h3>${s.nombre}</h3>
+        <p>Precio base: $${s.precio}</p>
+      </a>
     </div>
   `).join("");
 }
@@ -128,7 +132,6 @@ function cargarEquipo() {
 // ========================
 // GALERÍA
 // ========================
-
 function cargarGaleria() {
   const dots = document.getElementById("carouselDots");
 
@@ -153,12 +156,29 @@ function cargarGaleria() {
       actualizarGaleria();
     })
   );
+  iniciarAutoplay();
+}
+function iniciarAutoplay() {
+  autoplayInterval = setInterval(() => {
+    galIndex = (galIndex + 1) % GALERIA.length;
+    actualizarGaleria();
+  }, 4000); // cambia cada 4 segundos
 }
 
 function actualizarGaleria() {
   const img = document.getElementById("carouselImage");
+  const dots = document.querySelectorAll("#carouselDots button");
+
   img.src = GALERIA[galIndex].src;
   img.alt = GALERIA[galIndex].alt;
+
+  // Quitar clase activa a todos
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  // Activar el correspondiente
+  if (dots[galIndex]) {
+    dots[galIndex].classList.add("active");
+  }
 }
 
 

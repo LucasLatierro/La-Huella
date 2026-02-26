@@ -53,3 +53,54 @@ test("genera 18 horarios un dia de semana", () => {
 test("genera 8 horarios un sabado", () => {
   expect(generarHorarios(new Date(2026, 1, 7)).length).toBe(8);
 });
+
+test('guardarReserva', function(){
+    const resultado = guardarReserva;
+
+    expect(resultado).toBeTruthy();
+}),
+test('validarSuperposicion', function(){
+    const resultado = haySuperposicion;
+
+    expect(resultado).toBeTruthy();
+})
+test('validarReserva', function(){
+    const resultado = validarReserva;
+
+    expect(resultado).toBeTruthy();
+}),
+test('obtenerHorariosDisponibles', function(){
+    const resultado = obtenerHorariosDisponibles;
+
+    expect(resultado).toBeTruthy();
+}),
+test('deleteBookingById', function(){
+    const resultado = deleteBookingById;
+
+    expect(resultado).toBeTruthy();
+}),
+test('isAdminLogged', function(){
+    const resultado = isAdminLogged;
+
+    expect(resultado).toBeTruthy();
+}),
+test('setAdminSession', function(){
+    const resultado = setAdminSession;
+
+    expect(resultado).toBeTruthy();
+}),
+test('arrayServicios', function(){
+    const resultado = SERVICIOS;
+
+    expect(resultado).toBeTruthy();
+}),
+test('arrayFUNCIONARIOS', function(){
+    const resultado = FUNCIONARIOS;
+
+    expect(resultado).toBeTruthy();
+}),
+test('arrayGALERIA', function(){
+    const resultado = GALERIA;
+
+    expect(resultado).toBeTruthy();
+});
