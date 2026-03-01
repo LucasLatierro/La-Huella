@@ -1,3 +1,4 @@
+
 import {
   SERVICIOS,
   FUNCIONARIOS,
@@ -10,6 +11,20 @@ import {
   ADMIN_CREDENTIALS
 } from "./core/reservas.js";
 
+
+//para Jest
+/*const {
+  SERVICIOS,
+  FUNCIONARIOS,
+  readBookings,
+  obtenerActivas,
+  obtenerBorradas,
+  deleteBookingById,
+  isAdminLogged,
+  setAdminSession,
+  ADMIN_CREDENTIALS
+} = require("./core/reservas.js");
+*/
 
 function isNullOrWhitespace(texto) {
   return !texto || !texto.trim();
@@ -24,6 +39,8 @@ const adminMsg = document.getElementById("adminMsg");
 const tbody = document.getElementById("bookingsTbody");
 const emptyState = document.getElementById("emptyState");
 const fecAdminTabla = document.getElementById("fecAdminTabla");
+
+
 
 document.getElementById("btnFiltrarAdmin").addEventListener("click", filtrarPorDia);
 function filtrarPorDia(){
@@ -42,6 +59,8 @@ function protectRoute() {
   if (isAdminLogged()) {
     loginSection.hidden = true;
     dashboardSection.hidden = false;
+
+    setFechaHoy();
     renderTable();
   } else {
     loginSection.hidden = false;
@@ -53,6 +72,17 @@ function protectRoute() {
 // =========================
 // TABLA
 // =========================
+
+function setFechaHoy() {
+  const hoy = new Date();
+
+  const year = hoy.getFullYear();
+  const month = String(hoy.getMonth() + 1).padStart(2, "0");
+  const day = String(hoy.getDate()).padStart(2, "0");
+
+  fecAdminTabla.value = `${year}-${month}-${day}`;
+}
+
 function renderTable(borradas, fecha) {
   let reservas;
   if (isNullOrWhitespace(borradas)) {
@@ -157,3 +187,18 @@ document.getElementById("logoutBtn").onclick = () => {
 // START
 // =========================
 protectRoute();
+
+//export {
+// =========================================
+// EXPORT PARA JEST
+// =========================================
+if (typeof module !== "undefined") {
+  module.exports = {
+    isNullOrWhitespace,
+    escapeHtml,
+    showAdminMessage,
+    renderTable,
+    protectRoute,
+    confirmarBorrar
+  };
+} // para Jest
