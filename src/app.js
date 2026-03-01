@@ -66,7 +66,7 @@ function cargarServicios() {
   const cards = document.getElementById("servicesCards");
   cards.innerHTML = SERVICIOS.map(s =>
     `
-    <div class="card">
+    <div class="card s-${s.id}">
       <a href="#reserva">
         <img src="${s.img}" alt="${s.nombre}" href="#reserva">
         <h3>${s.nombre}</h3>
@@ -74,6 +74,30 @@ function cargarServicios() {
       </a>
     </div>
   `).join("");
+
+  asignarBotonesPorClase("card", reservarConTarjeta);
+}
+
+function asignarBotonesPorClase(clase, funcion) {
+  let botones = document.querySelectorAll("." + clase);
+  for (let i = 0; i < botones.length; i++) {
+    const element = botones[i];
+    element.addEventListener("click", funcion);
+  }
+}
+
+function reservarConTarjeta() {
+  if (this.className.includes("unias")) {
+    servicioSelect.value = "unias";
+  } else if (this.className.includes("corte")) {
+    servicioSelect.value = "corte";
+  } else if (this.className.includes("banio")) {
+    servicioSelect.value = "banio";
+  } else if (this.className.includes("medica")) {
+    servicioSelect.value = "medica";
+  }
+  servicioSelect.dispatchEvent(new Event('change'));
+
 }
 
 
