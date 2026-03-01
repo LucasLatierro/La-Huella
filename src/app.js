@@ -216,7 +216,7 @@ function actualizarGaleria() {
 function confirmarReserva(e) {
   e.preventDefault();
 
-  const reserva = obtenerDatos();
+  let reserva = obtenerDatos();
 
   const valid = validarReserva(reserva);
   if (!valid.valido) {
@@ -224,12 +224,9 @@ function confirmarReserva(e) {
     return;
   }
 
-  if (haySuperposicion(reserva)) {
-    mensaje.textContent = "Ese horario ya está ocupado.";
-    return;
-  }
-
   reserva.id = crypto.randomUUID();
+  if (reserva.servicio == `peluqueria`) reserva.precio = 1800;
+  if (reserva.servicio == `medica`) reserva.precio = 500;
   guardarReserva(reserva);
 
   mostrarConfirmacion(reserva);
