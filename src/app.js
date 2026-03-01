@@ -116,12 +116,16 @@ function servToProf() {
 // HORARIOS
 // ========================
 function cargarHorarios() {
-  limpiarSelect(horaSelect, "Seleccioná horario");
-
-  const fecha = fechaInput.value;
+  const fecha = fechaInput.value + "-00:00:00";
   const profesional = profesionalSelect.value;
 
   if (!fecha || !profesional) return;
+
+  if (new Date(fecha).getDay() === 0) {
+    limpiarSelect(horaSelect, "Los domingos no se atiende");
+  } else {
+    limpiarSelect(horaSelect, "Seleccioná horario");
+  }
 
   const horarios = obtenerHorariosDisponibles(fecha, profesional);
 
