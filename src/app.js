@@ -247,6 +247,7 @@ function obtenerDatos() {
     profesional: profesionalSelect.value,
     fecha: fechaInput.value,
     hora: horaSelect.value,
+    precio: 1,
     esActiva: true
   };
 }
