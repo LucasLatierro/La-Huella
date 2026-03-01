@@ -8,7 +8,8 @@ import {
   deleteBookingById,
   isAdminLogged,
   setAdminSession,
-  ADMIN_CREDENTIALS
+  ADMIN_CREDENTIALS,
+  obtenerReservas
 } from "./core/reservas.js";
 
 
@@ -44,7 +45,7 @@ const fecAdminTabla = document.getElementById("fecAdminTabla");
 
 document.getElementById("btnFiltrarAdmin").addEventListener("click", filtrarPorDia);
 function filtrarPorDia(){
-  renderTable(false, fecAdminTabla.value);
+  renderTable(fecAdminTabla.value);
 }
 
 // =========================
@@ -90,12 +91,12 @@ function renderTable(borradas, fecha) {
   } else {
     reservas = obtenerBorradas();
   }
+function renderTable(fecha) {
+  let reservas = obtenerReservas();
   if (isNullOrWhitespace(fecha)){
-    fecha = fecAdminTabla.value;
+    fecha = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
   }
-  if (!isNullOrWhitespace(fecha)){
-    reservas = reservas.filter(r => r.fecha === fecha);
-  }
+  reservas = reservas.filter(r => r.fecha == fecha);
   reservas.sort(
     (a, b) => {
       const da = new Date(`${a.fecha}T${a.hora}:00`);
@@ -111,15 +112,24 @@ function renderTable(borradas, fecha) {
       const prof = FUNCIONARIOS.find(f => f.id === r.profesional)?.nombre || r.profesional;
       const serv = SERVICIOS.find(s => s.id === r.servicio)?.nombre || r.servicio;
 
-      return `
+      let aRetornar = `
       <tr>
         <td>${r.fecha}</td>
         <td>${r.hora}</td>
         <td>${escapeHtml(r.mascota)}</td>
         <td>${escapeHtml(prof)}</td>
-        <td>${escapeHtml(serv)}</td>
-        <td><button data-id="${r.id}" class="btn btn--danger btn--sm">Borrar</button></td>
-      </tr>`;
+        <td>${escapeHtml(serv)}</td>`;
+      if (r.esActiva){
+        aRetornar += `<td style="background: rgba(183, 228, 199, 0.95); text-align: center;">Activa</td>
+        <td style="text-align: center;"><button data-id="${r.id}" class="btn btn--danger btn--sm">Cancelar</button></td>
+        </tr>`;
+        return aRetornar;
+      } else {
+        aRetornar += `<td style="background: rgba(228, 227, 183, 0.95); text-align: center;">Cancelada</td>
+        <td style="text-align: center;">X</td>
+        </tr>`;
+        return aRetornar;
+      }
     })
     .join("");
 
@@ -155,7 +165,7 @@ document.getElementById("btnReceiptCancelar").onclick = () => {
 document.getElementById("btnReceiptBorrar").onclick = function () {
   deleteBookingById(this.dataset.id);
   document.getElementById("receiptAdmin").hidden = true;
-  renderTable();
+  renderTable(fecAdminTabla.value ? fecAdminTabla.value : `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
 };
 
 
