@@ -84,14 +84,6 @@ function setFechaHoy() {
   fecAdminTabla.value = `${year}-${month}-${day}`;
 }
 
-function renderTable(borradas, fecha) {
-  let reservas;
-  if (isNullOrWhitespace(borradas)) {
-    reservas = obtenerActivas();
-  } else {
-    reservas = obtenerBorradas();
-  }
-}
 function renderTable(fecha) {
   let reservas = obtenerReservas();
   if (isNullOrWhitespace(fecha)) {
