@@ -254,14 +254,16 @@ function obtenerDatos() {
 
 
 // Confirmación
-function mostrarConfirmacion(r) {
-  const rec = document.getElementById("receipt");
-  document.getElementById("receiptText").textContent =
-    `Reserva para ${r.fecha} a las ${r.hora}. Pagos en el local.`;
-
-  rec.hidden = false;
+function mostrarConfirmacion(booking) {
+  let profName = FUNCIONARIOS.find(p => p.id === booking.profesional);
+  profName = profName.nombre;
+  receiptText.textContent = `${capitalize(booking.duenio)}, acabaste de reservar a ${profName} para ${capitalize(booking.mascota)}! Fecha y hora: ${booking.fecha} - ${booking.hora} • Precio: $${booking.precio}`;
+  receipt.hidden = false;
 }
 
+function capitalize(nombre) {
+  return nombre.charAt(0).toUpperCase() + nombre.slice(1);
+}
 
 // Helpers
 
