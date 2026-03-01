@@ -4,10 +4,10 @@
 
 // Servicios del sistema
 const SERVICIOS = [
-  { id: "peluqueria", nombre: "Peluquería - Corte", precio: 1800, img: "src/img/servicio-corte.jpg" },
-  { id: "peluqueria", nombre: "Peluquería - Baño", precio: 1800, img: "src/img/servicio-baño.jpg" },
-  { id: "peluqueria", nombre: "Peluquería - Corte de uñas", precio: 1800, img: "src/img/servicio-corte-uñas.jpg" },
-  { id: "medica", nombre: "Atención médica", precio: 500, img: "src/img/servicio-medico.jpg" }
+  { id: "corte", tipo: "peluqueria", nombre: "Peluquería - Corte", precio: 1800, img: "src/img/servicio-corte.jpg" },
+  { id: "banio", tipo: "peluqueria", nombre: "Peluquería - Baño", precio: 1800, img: "src/img/servicio-baño.jpg" },
+  { id: "unias", tipo: "peluqueria", nombre: "Peluquería - Corte de uñas", precio: 1800, img: "src/img/servicio-corte-uñas.jpg" },
+  { id: "medica", tipo: "medica", nombre: "Atención médica", precio: 500, img: "src/img/servicio-medico.jpg" }
 ];
 
 // Funcionarios del sistema
