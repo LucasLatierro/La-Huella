@@ -44,7 +44,7 @@ const fecAdminTabla = document.getElementById("fecAdminTabla");
 
 
 document.getElementById("btnFiltrarAdmin").addEventListener("click", filtrarPorDia);
-function filtrarPorDia(){
+function filtrarPorDia() {
   renderTable(fecAdminTabla.value);
 }
 
@@ -91,9 +91,10 @@ function renderTable(borradas, fecha) {
   } else {
     reservas = obtenerBorradas();
   }
+}
 function renderTable(fecha) {
   let reservas = obtenerReservas();
-  if (isNullOrWhitespace(fecha)){
+  if (isNullOrWhitespace(fecha)) {
     fecha = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
   }
   reservas = reservas.filter(r => r.fecha == fecha);
@@ -119,7 +120,7 @@ function renderTable(fecha) {
         <td>${escapeHtml(r.mascota)}</td>
         <td>${escapeHtml(prof)}</td>
         <td>${escapeHtml(serv)}</td>`;
-      if (r.esActiva){
+      if (r.esActiva) {
         aRetornar += `<td style="background: rgba(183, 228, 199, 0.95); text-align: center;">Activa</td>
         <td style="text-align: center;"><button data-id="${r.id}" class="btn btn--danger btn--sm">Cancelar</button></td>
         </tr>`;
