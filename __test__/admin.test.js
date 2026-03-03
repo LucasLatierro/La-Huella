@@ -53,17 +53,20 @@ test("confirmarBorrar existe", function(){
 // TESTS FUNCIONALES SIMPLES
 // ============================
 
-test("isNullOrWhitespace devuelve true con string vacio", function(){
-    const resultado = isNullOrWhitespace("");
-
-    expect(resultado).toBe(true);
+test("casos en los que isNullOrWhitespace devuelve true", function(){
+    expect(isNullOrWhitespace("")).toBe(true);
+    expect(isNullOrWhitespace("  ")).toBe(true);
+    expect(isNullOrWhitespace(0)).toBe(true);
+    expect(isNullOrWhitespace(null)).toBe(true);
+    expect(isNullOrWhitespace(false)).toBe(true);
 });
 
-test("isNullOrWhitespace devuelve false con texto", function(){
-    const resultado = isNullOrWhitespace("hola");
-
-    expect(resultado).toBe(false);
+test("isNullOrWhitespace devuelve false", function(){
+    expect(isNullOrWhitespace("hola")).toBe(false);
+    expect(isNullOrWhitespace("0")).toBe(false);
+    expect(isNullOrWhitespace("false")).toBe(false);
 });
+
 
 test("escapeHtml reemplaza < correctamente", function(){
     const resultado = escapeHtml("<script>");
