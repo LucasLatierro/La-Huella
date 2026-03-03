@@ -50,7 +50,7 @@ function cargarServicios() {
   servicioSelect.innerHTML = `<option disabled selected>Seleccioná un servicio</option>`;
 
   SERVICIOS.forEach(s => {
-    servicioSelect.innerHTML += `<option value="${s.id}">${s.nombre}</option>`;
+    servicioSelect.innerHTML += `<option value="${s.id}" class="${s.tipo}">${s.nombre}</option>`;
   });
 
   // Render tarjetas en la sección servicios
@@ -98,7 +98,7 @@ function reservarConTarjeta() {
 function servToProf() {
   limpiarSelect(profesionalSelect, "Elegí un profesional");
   const tipo = servicioSelect.value;
-  FUNCIONARIOS.filter(f => f.tipo === tipo).forEach(f => {
+  FUNCIONARIOS.filter(f => f.tipo.includes(tipo)).forEach(f => {
     profesionalSelect.innerHTML += `<option value="${f.id}">${f.nombre}</option>`;
   });
 }

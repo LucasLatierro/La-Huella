@@ -15,9 +15,9 @@ const FUNCIONARIOS = [
   { id: "salud-1", tipo: "medica", nombre: "Dra. Sofía", foto: "src/img/equipo-1.jpg" },
   { id: "salud-2", tipo: "medica", nombre: "Dra. Valentina", foto: "src/img/equipo-2.jpg" },
   { id: "salud-3", tipo: "medica", nombre: "Dra. Camila", foto: "src/img/equipo-3.jpg" },
-  { id: "estetica-1", tipo: "peluqueria", nombre: "Peluquera Mía", foto: "src/img/equipo-4.jpg" },
-  { id: "estetica-2", tipo: "peluqueria", nombre: "Peluquera Lola", foto: "src/img/equipo-5.jpg" },
-  { id: "estetica-3", tipo: "peluqueria", nombre: "Peluquera Alma", foto: "src/img/equipo-6.jpg" }
+  { id: "estetica-1", tipo: "peluqueria-corte-unias-banio", nombre: "Peluquera Mía", foto: "src/img/equipo-4.jpg" },
+  { id: "estetica-2", tipo: "peluqueria-corte-unias-banio", nombre: "Peluquera Lola", foto: "src/img/equipo-5.jpg" },
+  { id: "estetica-3", tipo: "peluqueria-corte-unias-banio", nombre: "Peluquera Alma", foto: "src/img/equipo-6.jpg" }
 ];
 
 // Galería
