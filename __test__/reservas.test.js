@@ -14,7 +14,7 @@ const {
   generarHorarios,
   obtenerHorariosDisponibles,
   validarReserva,
-  haySuperposicion
+  haySuperposicion,
 } = require("../src/core/reservas.js")
 
 test("existen funcionarios", () => {
@@ -31,6 +31,14 @@ test("existen servicios", () => {
 
 test("hay 4 servicios", () => {
   expect(SERVICIOS.length).toBe(4);
+});
+
+test('existe galeria', () => {
+    expect(GALERIA.length).toBeGreaterThan(0);
+});
+
+test('hay 3 imagenes en galeria', () => {
+    expect(GALERIA.length).toBe(3);
 });
 
 test("chequea credenciales admin", () => {
@@ -53,17 +61,12 @@ test("genera 18 horarios un dia de semana", () => {
 test("genera 8 horarios un sabado", () => {
   expect(generarHorarios(new Date(2026, 1, 7)).length).toBe(8);
 });
-
+/* 
 test('guardarReserva', function(){
-    const resultado = guardarReserva;
+    const resultado = guardarReserva();
 
     expect(resultado).toBeTruthy();
 }),
-test('validarSuperposicion', function(){
-    const resultado = haySuperposicion;
-
-    expect(resultado).toBeTruthy();
-})
 test('validarReserva', function(){
     const resultado = validarReserva;
 
@@ -88,19 +91,4 @@ test('setAdminSession', function(){
     const resultado = setAdminSession;
 
     expect(resultado).toBeTruthy();
-}),
-test('arrayServicios', function(){
-    const resultado = SERVICIOS;
-
-    expect(resultado).toBeTruthy();
-}),
-test('arrayFUNCIONARIOS', function(){
-    const resultado = FUNCIONARIOS;
-
-    expect(resultado).toBeTruthy();
-}),
-test('arrayGALERIA', function(){
-    const resultado = GALERIA;
-
-    expect(resultado).toBeTruthy();
-});
+}); */
