@@ -12,9 +12,9 @@ import {
   obtenerReservas
 } from "./core/reservas.js";
 
-
+/* 
 //para Jest
-/*const {
+const {
   SERVICIOS,
   FUNCIONARIOS,
   readBookings,
@@ -24,8 +24,8 @@ import {
   isAdminLogged,
   setAdminSession,
   ADMIN_CREDENTIALS
-} = require("./core/reservas.js");
-*/
+} = require("./core/reservas.js"); */
+
 
 function isNullOrWhitespace(texto) {
   return !texto || !texto.trim();
@@ -191,11 +191,16 @@ document.getElementById("logoutBtn").onclick = () => {
 // =========================
 protectRoute();
 
-//export {
-// =========================================
-// EXPORT PARA JEST
-// =========================================
-if (typeof module !== "undefined") {
+export {
+  isNullOrWhitespace,
+  escapeHtml,
+  showAdminMessage,
+  renderTable,
+  protectRoute,
+  confirmarBorrar
+}; // para html
+
+/* if (typeof module !== "undefined") {
   module.exports = {
     isNullOrWhitespace,
     escapeHtml,
@@ -204,4 +209,4 @@ if (typeof module !== "undefined") {
     protectRoute,
     confirmarBorrar
   };
-} // para Jest
+} // para Jest */
