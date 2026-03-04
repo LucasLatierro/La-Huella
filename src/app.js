@@ -216,7 +216,8 @@ function confirmarReserva(e) {
   }
 
   reserva.id = crypto.randomUUID();
-  if (reserva.servicio == `peluqueria`) reserva.precio = 1800;
+  const serv = `banio corte unias`;
+  if (serv.includes(reserva.servicio)) reserva.precio = 1800;
   if (reserva.servicio == `medica`) reserva.precio = 500;
   guardarReserva(reserva);
 
